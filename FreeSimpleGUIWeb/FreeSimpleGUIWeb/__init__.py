@@ -22,7 +22,6 @@ from random import randint
 import time
 import pkg_resources
 
-
 # from typing import List, Any, Union, Tuple, Dict    # For doing types in comments. perhaps not required
 
 
@@ -524,28 +523,24 @@ class InputText(Element):
 
     class TextInput_raw_onkeyup(remi.gui.TextInput):
         @remi.gui.decorate_set_on_listener('(self, emitter, key, keycode, ctrl, shift, alt)')
-        @remi.gui.decorate_event_js(
-            """var params={};params['key']=event.key;
+        @remi.gui.decorate_event_js("""var params={};params['key']=event.key;
                 params['keycode']=(event.which||event.keyCode);
                 params['ctrl']=event.ctrlKey;
                 params['shift']=event.shiftKey;
                 params['alt']=event.altKey;
                 sendCallbackParam('%(emitter_identifier)s','%(event_name)s',params);
-                event.stopPropagation();event.preventDefault();return false;"""
-        )
+                event.stopPropagation();event.preventDefault();return false;""")
         def onkeyup(self, key, keycode, ctrl, shift, alt):
             return (key, keycode, ctrl, shift, alt)
 
         @remi.gui.decorate_set_on_listener('(self, emitter, key, keycode, ctrl, shift, alt)')
-        @remi.gui.decorate_event_js(
-            """var params={};params['key']=event.key;
+        @remi.gui.decorate_event_js("""var params={};params['key']=event.key;
                 params['keycode']=(event.which||event.keyCode);
                 params['ctrl']=event.ctrlKey;
                 params['shift']=event.shiftKey;
                 params['alt']=event.altKey;
                 sendCallbackParam('%(emitter_identifier)s','%(event_name)s',params);
-                event.stopPropagation();event.preventDefault();return false;"""
-        )
+                event.stopPropagation();event.preventDefault();return false;""")
         def onkeydown(self, key, keycode, ctrl, shift, alt):
             return (key, keycode, ctrl, shift, alt)
 
@@ -1992,8 +1987,7 @@ class SuperImage(remi.gui.Image):
         i = int(time.time() * 1e6)
         # self.app_instance.execute_javascript("""
         if Window.App is not None:
-            Window.App.execute_javascript(
-                """
+            Window.App.execute_javascript("""
                 var url = '/%(id)s/get_image_data?update_index=%(frame_index)s';
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', url, true);
@@ -2004,9 +1998,7 @@ class SuperImage(remi.gui.Image):
                     document.getElementById('%(id)s').src = imageUrl;
                 }
                 xhr.send();
-                """
-                % {'id': id(self), 'frame_index': i}
-            )
+                """ % {'id': id(self), 'frame_index': i})
 
     def get_image_data(self, update_index):
         headers = {'Content-type': self.mimetype if self.mimetype else 'application/octet-stream'}
@@ -2497,7 +2489,7 @@ class Frame(Element):
             self.AddRow(*row)
 
     def _GetElementAtLocation(self, location):
-        (row_num, col_num) = location
+        row_num, col_num = location
         row = self.Rows[row_num]
         element = row[col_num]
         return element
@@ -2618,7 +2610,7 @@ class Tab(Element):
     #     return self
 
     def _GetElementAtLocation(self, location):
-        (row_num, col_num) = location
+        row_num, col_num = location
         row = self.Rows[row_num]
         element = row[col_num]
         return element
@@ -2712,7 +2704,7 @@ class TabGroup(Element):
             self._AddRow(*row)
 
     def _GetElementAtLocation(self, location):
-        (row_num, col_num) = location
+        row_num, col_num = location
         row = self.Rows[row_num]
         element = row[col_num]
         return element
@@ -2882,7 +2874,7 @@ class Column(Element):
             self.AddRow(*row)
 
     def _GetElementAtLocation(self, location):
-        (row_num, col_num) = location
+        row_num, col_num = location
         row = self.Rows[row_num]
         element = row[col_num]
         return element
@@ -3281,7 +3273,7 @@ class Window:
     stdout_string_io = None
     stdout_location = None
     port_number = 6900
-    active_windows = []  # type:  [Window]
+    active_windows = []  # type: [Window]
     App = None  # type: remi.App
 
     def __init__(
@@ -3645,7 +3637,7 @@ class Window:
         pass
 
     def _GetElementAtLocation(self, location):
-        (row_num, col_num) = location
+        row_num, col_num = location
         row = self.Rows[row_num]
         element = row[col_num]
         return element
@@ -5310,7 +5302,7 @@ def BuildResultsForSubform(form, initialize_only, top_level_form):
                     except:
                         value = None
                 elif element.Type == ELEM_TYPE_TABLE:
-                    element = element  # type:Table
+                    element = element  # type: Table
                     value = [
                         element.SelectedRow,
                     ]

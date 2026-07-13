@@ -1001,7 +1001,7 @@ class Checkbox(Element):
         '''
         self.Text = text
         self.InitialState = default
-        self.WxCheckbox = None  # type:wx.CheckBox
+        self.WxCheckbox = None  # type: wx.CheckBox
         self.Disabled = disabled
         self.TextColor = text_color if text_color else DEFAULT_TEXT_COLOR
         self.ChangeSubmits = change_submits or enable_events
@@ -1114,7 +1114,7 @@ class Spin(Element):
         return
 
     def _WxSpinCallback(self, event):
-        event = event  # type:wx.SpinEvent
+        event = event  # type: wx.SpinEvent
         print(f'spin event {event.GetInt()} {self.WxSpinCtrl.GetValue()}')
         offset = event.GetInt()
         self.WxTextCtrl.SetValue(self.Values[offset])
@@ -2360,7 +2360,7 @@ class Frame(Element):
             self._AddRow(*row)
 
     def _GetElementAtLocation(self, location):
-        (row_num, col_num) = location
+        row_num, col_num = location
         row = self.Rows[row_num]
         element = row[col_num]
         return element
@@ -2496,7 +2496,7 @@ class Tab(Element):
         return self
 
     def _GetElementAtLocation(self, location):
-        (row_num, col_num) = location
+        row_num, col_num = location
         row = self.Rows[row_num]
         element = row[col_num]
         return element
@@ -2587,7 +2587,7 @@ class TabGroup(Element):
             self._AddRow(*row)
 
     def _GetElementAtLocation(self, location):
-        (row_num, col_num) = location
+        row_num, col_num = location
         row = self.Rows[row_num]
         element = row[col_num]
         return element
@@ -2756,7 +2756,7 @@ class Column(Element):
             self._AddRow(*row)
 
     def _GetElementAtLocation(self, location):
-        (row_num, col_num) = location
+        row_num, col_num = location
         row = self.Rows[row_num]
         element = row[col_num]
         return element
@@ -3569,7 +3569,7 @@ class Window:
         pass
 
     def _GetElementAtLocation(self, location):
-        (row_num, col_num) = location
+        row_num, col_num = location
         row = self.Rows[row_num]
         element = row[col_num]
         return element
@@ -3619,7 +3619,7 @@ class Window:
         #     self.App.ExitMainLoop()
 
     def callback_keyboard_char(self, event):
-        event = event  # type:wx.KeyEvent
+        event = event  # type: wx.KeyEvent
         self.LastButtonClicked = None
         self.FormRemainedOpen = True
         if event.ClassName == 'wxMouseEvent':
@@ -6025,7 +6025,7 @@ def PackFormIntoFrame(container_elem, containing_frame, toplevel_form):
                 element._reroute_stdout()
             # -------------------------  INPUT CHECKBOX element  ------------------------- #
             elif element_type == ELEM_TYPE_INPUT_CHECKBOX:
-                element = element  # type:Checkbox
+                element = element  # type: Checkbox
                 element.WxCheckbox = widget = wx.CheckBox(toplevel_form.MasterPanel)
                 if element.Text:
                     widget.SetLabel(element.Text)
@@ -6069,7 +6069,7 @@ def PackFormIntoFrame(container_elem, containing_frame, toplevel_form):
 
                 # -------------------------  INPUT SPINNER element  ------------------------- #
             elif element_type == ELEM_TYPE_INPUT_SPIN:
-                element = element  # type:Spin
+                element = element  # type: Spin
                 ######## First make an Input widget that will be used to display the text ########
                 style = wx.ALIGN_RIGHT
                 if element.ReadOnly:

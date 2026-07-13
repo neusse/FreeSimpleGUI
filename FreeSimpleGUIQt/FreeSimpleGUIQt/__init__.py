@@ -3320,7 +3320,7 @@ class Frame(Element):
             self.AddRow(*row)
 
     def _GetElementAtLocation(self, location):
-        (row_num, col_num) = location
+        row_num, col_num = location
         row = self.Rows[row_num]
         element = row[col_num]
         return element
@@ -3485,7 +3485,7 @@ class Tab(Element):
         return self
 
     def _GetElementAtLocation(self, location):
-        (row_num, col_num) = location
+        row_num, col_num = location
         row = self.Rows[row_num]
         element = row[col_num]
         return element
@@ -3619,7 +3619,7 @@ class TabGroup(Element):
             self.AddRow(*row)
 
     def _GetElementAtLocation(self, location):
-        (row_num, col_num) = location
+        row_num, col_num = location
         row = self.Rows[row_num]
         element = row[col_num]
         return element
@@ -3749,7 +3749,7 @@ class Slider(Element):
             temp_size = (150, 30) if self.Orientation.startswith('h') else (30, 150)
         elif size[0] is not None and size[0] < 100:
             temp_size = size[0] * 10, size[1] * 3
-        self.Widget = self.QT_Slider = None  # type:QSlider
+        self.Widget = self.QT_Slider = None  # type: QSlider
 
         super().__init__(
             ELEM_TYPE_INPUT_SLIDER,
@@ -4039,7 +4039,7 @@ class Column(Element):
             self.AddRow(*row)
 
     def _GetElementAtLocation(self, location):
-        (row_num, col_num) = location
+        row_num, col_num = location
         row = self.Rows[row_num]
         element = row[col_num]
         return element
@@ -5196,7 +5196,7 @@ class Window:
         pass
 
     def _GetElementAtLocation(self, location):
-        (row_num, col_num) = location
+        row_num, col_num = location
         row = self.Rows[row_num]
         element = row[col_num]
         return element
@@ -6015,14 +6015,12 @@ def create_style_from_font(font):
     is_bold_text = 'font-weight : bold;' if is_bold else ''
     is_underline_text = 'text-decoration: underline;' if is_underline else ''
 
-    return textwrap.dedent(
-        f'''
+    return textwrap.dedent(f'''
         {is_underline_text}
         {is_bold_text}
         font-family: "{font_name}";
         font-size: {font_size}pt;
-        '''.strip()
-    ).replace('\n', '')
+        '''.strip()).replace('\n', '')
 
 
 def set_widget_visiblity(widget, visible):
@@ -8757,7 +8755,7 @@ def PackFormIntoFrame(container_elem, containing_frame, toplevel_win):
                 container_elem.QT_QTabWidget.addTab(tab_widget, element.Title)
             # -------------------------  TabGroup placement element  ------------------------- #
             elif element_type == ELEM_TYPE_TAB_GROUP:
-                element = element  # type:TabGroup
+                element = element  # type: TabGroup
                 element.Widget = element.QT_QTabWidget = qtab = QTabWidget()
 
                 # === style ===

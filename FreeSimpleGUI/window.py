@@ -821,7 +821,7 @@ class Window:
         :rtype:
         """
 
-        (row_num, col_num) = location
+        row_num, col_num = location
         row = self.Rows[row_num]
         element = row[col_num]
         return element
@@ -2760,7 +2760,7 @@ class Window:
     @classmethod
     def _restore_stdout(cls):
         for item in cls._rerouted_stdout_stack:
-            (window, element) = item  # type: (Window, Element)
+            window, element = item  # type: (Window, Element)
             if not window.is_closed():
                 sys.stdout = element
                 break
@@ -2772,7 +2772,7 @@ class Window:
     @classmethod
     def _restore_stderr(cls):
         for item in cls._rerouted_stderr_stack:
-            (window, element) = item  # type: (Window, Element)
+            window, element = item  # type: (Window, Element)
             if not window.is_closed():
                 sys.stderr = element
                 break

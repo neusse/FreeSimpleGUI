@@ -36,7 +36,6 @@ from typing import Dict  # noqa
 from typing import List  # noqa
 from typing import Tuple  # noqa
 
-
 # get the tkinter detailed version
 tclversion_detailed = tkinter.Tcl().eval('info patchlevel')
 framework_version = tclversion_detailed
@@ -14538,9 +14537,7 @@ def _github_issue_post_make_markdown(
 #### Project details
 
 {}
-""".format(
-        issue_type, operating_system, os_ver, psg_port, python_ver, psg_ver, gui_ver, project_details
-    )
+""".format(issue_type, operating_system, os_ver, psg_port, python_ver, psg_ver, gui_ver, project_details)
 
     body2 = """
 
@@ -14610,17 +14607,13 @@ These items may solve your problem. Please check those you've done by changing -
         body2 += """
 ## Watcha Makin?
 {}
-""".format(
-            str(project_details)
-        )
+""".format(str(project_details))
 
     if where_found:
         body2 += """
 ## How did you find PySimpleGUI?
 {}
-""".format(
-            str(where_found)
-        )
+""".format(str(where_found))
     return body + body2
 
 

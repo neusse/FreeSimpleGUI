@@ -388,7 +388,7 @@ class Column(Element):
         :rtype:              (Element)
         """
 
-        (row_num, col_num) = location
+        row_num, col_num = location
         row = self.Rows[row_num]
         element = row[col_num]
         return element
